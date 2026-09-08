@@ -178,6 +178,27 @@
     border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
   }
 
+  /* ---------- experience (small square cards) ---------- */
+  .exp-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:16px; }
+  .exp-card{
+    border:1px solid var(--border); border-radius:14px; background:var(--bg-alt);
+    padding:24px; display:flex; flex-direction:column; gap:14px;
+  }
+  .exp-card .icon{
+    width:44px; height:44px; border-radius:10px; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .exp-card .icon svg{ width:22px; height:22px; }
+  .exp-card .num{ font-family:var(--font-mono); font-size:.68rem; color:var(--accent); }
+  .exp-card h3{ font-size:1.02rem; font-weight:600; line-height:1.3; margin-top:6px; }
+  .exp-card .meta{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:4px; }
+  .exp-card p.desc{ font-size:.85rem; color:var(--text-soft); }
+  .exp-card .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; padding-top:4px; }
+  .exp-card .tag{
+    font-family:var(--font-mono); font-size:.65rem; padding:4px 9px;
+    border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
+  }
+
   .edu-strip{
     margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;
   }
@@ -291,55 +312,54 @@
         </div>
       </div>
 
-      <div class="card-list">
-        <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--accent), var(--text));">
+      <div class="exp-grid">
+        <article class="exp-card">
+          <div class="icon" style="background:linear-gradient(135deg, var(--accent), var(--text));">
             <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l2 6H12l2-6Z" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 22v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V22" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M19 27v4M29 27v4" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">Jul 2025 — Presente · 1 año 2 meses</div>
             <h3>UX Product Content Designer</h3>
-            <div class="meta">Miravia · AliExpress — Equipo internacional (Europa &amp; China)</div>
-            <p class="desc">Diseño y optimización de la experiencia de las plataformas de sellers de AliExpress y Miravia: research, arquitectura de la información, contenido y testing de usabilidad.</p>
-            <div class="tag-row">
-              <span class="tag">UX Research</span>
-              <span class="tag">Arquitectura de la información</span>
-              <span class="tag">Usabilidad</span>
-            </div>
+            <div class="meta">Miravia · AliExpress</div>
+          </div>
+          <p class="desc">Research, arquitectura de la información y contenido para las plataformas de sellers de AliExpress y Miravia.</p>
+          <div class="tag-row">
+            <span class="tag">UX Research</span>
+            <span class="tag">IA</span>
+            <span class="tag">Europa · China</span>
           </div>
         </article>
 
-        <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--accent2), var(--accent));">
+        <article class="exp-card">
+          <div class="icon" style="background:linear-gradient(135deg, var(--accent2), var(--accent));">
             <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="24" cy="24" r="3.5" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 11v5M24 32v5M37 24h-5M16 24h-5" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">Feb 2024 — Jul 2025 · 1 año 5 meses</div>
             <h3>UX Product Content Designer — HMI CUPRA</h3>
-            <div class="meta">arttalo TECH — Barcelona, Cataluña</div>
-            <p class="desc">Contenido y soluciones UX centradas en la persona usuaria para sistemas de infoentretenimiento (HMI), con testing de usabilidad y evaluaciones heurísticas.</p>
-            <div class="tag-row">
-              <span class="tag">Automoción</span>
-              <span class="tag">Localización · 33 idiomas</span>
-              <span class="tag">Usability Testing</span>
-            </div>
+            <div class="meta">arttalo TECH</div>
+          </div>
+          <p class="desc">Contenido y UX para sistemas de infoentretenimiento (HMI) en mercados globales.</p>
+          <div class="tag-row">
+            <span class="tag">Automoción</span>
+            <span class="tag">33 idiomas</span>
+            <span class="tag">Barcelona</span>
           </div>
         </article>
 
-        <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--text), var(--accent2));">
+        <article class="exp-card">
+          <div class="icon" style="background:linear-gradient(135deg, var(--text), var(--accent2));">
             <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="9" width="24" height="30" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M17 18h14M17 24h14M17 30h9" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">Nov 2023 — Feb 2024 · 3 meses</div>
             <h3>Product Designer</h3>
             <div class="meta">Pontia Tech</div>
-            <p class="desc">Contenido web, copywriting y comunicación digital alineados con objetivos de negocio y de usuario, apoyada en datos de Google Analytics.</p>
-            <div class="tag-row">
-              <span class="tag">Content Design</span>
-              <span class="tag">Google Analytics</span>
-              <span class="tag">Copywriting</span>
-            </div>
+          </div>
+          <p class="desc">Contenido web y comunicación digital basados en datos, tras el bootcamp de UX/UI.</p>
+          <div class="tag-row">
+            <span class="tag">Content Design</span>
+            <span class="tag">Analytics</span>
           </div>
         </article>
       </div>
