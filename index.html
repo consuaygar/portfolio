@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consuelo Ayllón García — Product Designer</title>
+<meta name="description" content="Portfolio de Consuelo Ayllón García, Product Designer con base en contenido y arquitectura de la información.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#F2F3F6;
+    --bg-alt:#FFFFFF;
+    --bg-dim:#E4E6EC;
+    --text:#14161B;
+    --text-soft:#4A4F58;
+    --border:#CDD0DA;
+    --accent:#2A3FC0;
+    --accent-strong:#1F2F96;
+    --accent-contrast:#FFFFFF;
+    --accent2:#A5730E;
+    --accent2-strong:#7A530A;
+    --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:'Archivo', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101217;
+      --bg-alt:#171A21;
+      --bg-dim:#1D2029;
+      --text:#ECEEF2;
+      --text-soft:#A7ACB8;
+      --border:#2B2F3A;
+      --accent:#7C90F0;
+      --accent-strong:#9BABF6;
+      --accent-contrast:#10131F;
+      --accent2:#E3AC49;
+      --accent2-strong:#F0C06C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101217; --bg-alt:#171A21; --bg-dim:#1D2029;
+    --text:#ECEEF2; --text-soft:#A7ACB8; --border:#2B2F3A;
+    --accent:#7C90F0; --accent-strong:#9BABF6; --accent-contrast:#10131F;
+    --accent2:#E3AC49; --accent2-strong:#F0C06C;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:var(--font-display); color:var(--text); text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+  ::selection{ background:var(--accent); color:var(--accent-contrast); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  img{ max-width:100%; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 40px; }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--text-soft);
+  }
+
+  /* ---------- nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-row{
+    max-width:1080px; margin:0 auto; padding:0 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
+  .brand svg{ display:block; }
+  .brand span{ font-family:var(--font-display); font-weight:600; font-size:1rem; }
+  nav.links{ display:flex; align-items:center; gap:28px; }
+  nav.links a{
+    color:var(--text-soft); text-decoration:none; font-size:.88rem; font-weight:500;
+    padding:6px 2px; border-bottom:1px solid transparent;
+  }
+  nav.links a:hover, nav.links a.active{ color:var(--text); border-color:var(--accent); }
+  .nav-cta{
+    font-family:var(--font-body); font-weight:600; font-size:.85rem;
+    background:var(--accent); color:var(--accent-contrast);
+    padding:10px 18px; border-radius:8px; text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--accent-strong); }
+  .menu-btn{
+    display:none; background:none; border:1px solid var(--border); border-radius:8px;
+    width:40px; height:40px; color:var(--text); cursor:pointer;
+  }
+
+  /* ---------- hero ---------- */
+  section#perfil{ padding:88px 0 64px; border-bottom:1px solid var(--border); }
+  #perfil h1{
+    font-weight:900; font-size:clamp(2.4rem, 1.7rem + 3vw, 4.1rem);
+    line-height:1.02; letter-spacing:-.01em; max-width:16ch;
+  }
+  #perfil h1 em{ font-style:italic; font-weight:400; color:var(--accent); }
+  .lede-block{ max-width:620px; margin-top:28px; }
+  .lede-block p{ font-size:1.12rem; color:var(--text-soft); }
+  .lede-block p + p{ margin-top:14px; }
+  .lede-block strong{ color:var(--text); font-weight:600; }
+
+  .meta-row{ display:flex; flex-wrap:wrap; gap:32px; margin-top:38px; }
+  .meta-row div{ font-size:.86rem; }
+  .meta-row .k{
+    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em;
+    font-size:.66rem; color:var(--text-soft); margin-bottom:4px;
+  }
+  .hero-cta{ display:flex; gap:14px; margin-top:38px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:.9rem;
+    padding:13px 24px; border-radius:8px; border:1px solid transparent;
+    cursor:pointer; text-decoration:none; display:inline-block; transition:transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn:active{ transform:translateY(1px); }
+  .btn-primary{ background:var(--accent); color:var(--accent-contrast); }
+  .btn-primary:hover{ background:var(--accent-strong); }
+  .btn-secondary{ background:transparent; color:var(--text); border-color:var(--border); }
+  .btn-secondary:hover{ border-color:var(--accent); color:var(--accent); }
+
+  .skill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; }
+  .skill{
+    font-family:var(--font-mono); font-size:.72rem; padding:6px 13px;
+    border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
+  }
+
+  /* ---------- section shell ---------- */
+  section.block{ padding:80px 0; border-bottom:1px solid var(--border); }
+  section.block:last-of-type{ border-bottom:none; }
+  .section-head{ display:grid; grid-template-columns:44px 1fr; gap:16px; margin-bottom:44px; }
+  .section-head .idx{ font-family:var(--font-mono); font-size:.78rem; color:var(--accent); padding-top:.4em; }
+  .section-head h2{ font-size:clamp(1.6rem, 1.3rem + 1vw, 2.1rem); font-weight:600; line-height:1.15; }
+  .section-head p{ color:var(--text-soft); margin-top:10px; max-width:56ch; }
+
+  /* ---------- experience ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .job{
+    display:grid; grid-template-columns:190px 1fr; gap:28px;
+    padding:28px 0; border-top:1px solid var(--border);
+  }
+  .timeline .job:last-child{ border-bottom:1px solid var(--border); }
+  .job .when{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-soft); line-height:1.6; }
+  .job .role{ font-weight:600; font-size:1.05rem; }
+  .job .org{ color:var(--accent); font-size:.92rem; font-weight:500; margin-top:2px; }
+  .job .desc{ margin-top:10px; color:var(--text-soft); font-size:.92rem; max-width:60ch; }
+  .job .loc{ font-size:.78rem; color:var(--text-soft); margin-top:8px; }
+
+  .edu-strip{
+    margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  }
+  .edu-card{
+    border:1px solid var(--border); border-radius:12px; background:var(--bg-alt);
+    padding:20px 22px;
+  }
+  .edu-card .school{ font-weight:600; font-size:.94rem; }
+  .edu-card .deg{ color:var(--text-soft); font-size:.86rem; margin-top:4px; }
+  .edu-card .when{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:10px; }
+
+  /* ---------- projects ---------- */
+  .proj-list{ display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+  .proj{
+    display:grid; grid-template-columns:170px 1fr; gap:32px;
+    background:var(--bg-alt); padding:36px;
+    align-items:center;
+  }
+  .proj .thumb{
+    aspect-ratio:4/3; border-radius:10px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .proj .thumb svg{ width:46%; height:46%; }
+  .proj .num{
+    font-family:var(--font-mono); font-size:.72rem; color:var(--accent);
+    margin-bottom:8px;
+  }
+  .proj h3{ font-size:1.35rem; font-weight:600; }
+  .proj .proj-meta{ font-family:var(--font-mono); font-size:.74rem; color:var(--text-soft); margin-top:6px; }
+  .proj p.desc{ margin-top:14px; color:var(--text-soft); font-size:.92rem; max-width:62ch; }
+  .proj .tag-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+  .proj .tag{
+    font-family:var(--font-mono); font-size:.68rem; padding:5px 11px;
+    border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
+  }
+
+  /* ---------- contact / footer ---------- */
+  footer#contacto{ padding:80px 0 48px; }
+  footer#contacto .card{
+    background:var(--bg-alt); border:1px solid var(--border); border-radius:16px;
+    padding:52px 48px; text-align:center;
+  }
+  footer#contacto h2{ font-size:clamp(1.6rem,1.3rem + 1vw,2.3rem); font-weight:600; }
+  footer#contacto p{ color:var(--text-soft); margin-top:14px; max-width:46ch; margin-left:auto; margin-right:auto; }
+  .contact-links{ display:flex; gap:14px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+  .bottom-bar{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:36px; font-size:.78rem; color:var(--text-soft); flex-wrap:wrap; gap:12px;
+  }
+
+  @media (max-width: 860px){
+    .wrap, .nav-row{ padding-left:22px; padding-right:22px; }
+    nav.links{ display:none; }
+    .menu-btn{ display:flex; align-items:center; justify-content:center; }
+    section#perfil{ padding:64px 0 48px; }
+    section.block{ padding:56px 0; }
+    .job{ grid-template-columns:1fr; gap:6px; }
+    .edu-strip{ grid-template-columns:1fr; }
+    .proj{ grid-template-columns:1fr; padding:26px; }
+    .proj .thumb{ max-width:160px; }
+    footer#contacto .card{ padding:40px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-row">
+    <a class="brand" href="#perfil">
+      <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="12" stroke="var(--accent)" stroke-width="1.4"/>
+        <path d="M13 4 L13 22 M4 13 L22 13" stroke="var(--accent)" stroke-width="1.4"/>
+        <circle cx="13" cy="13" r="3.4" fill="var(--accent2)"/>
+      </svg>
+      <span>Ayllón García</span>
+    </a>
+    <nav class="links" id="nav-links">
+      <a href="#perfil">Perfil</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="mailto:consuaygar@gmail.com">Escríbeme</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="perfil">
+    <div class="wrap">
+      <div class="eyebrow">Product Designer · Content &amp; Arquitectura de la Información</div>
+      <h1 style="margin-top:20px;">Diseño el <em>contenido</em><br>que hace funcionar el producto.</h1>
+
+      <div class="lede-block">
+        <p>Soy <strong>Consuelo Ayllón García</strong>, Product Designer en Alibaba Group, donde trabajo en la experiencia y el contenido de Miravia. Vengo del contenido y la arquitectura de la información, y hoy diseño de punta a punta: investigación, flujos e interfaz.</p>
+        <p>Me interesa especialmente la IA aplicada al diseño de producto, y la responsabilidad que tenemos como diseñadoras detrás de ella.</p>
+      </div>
+
+      <div class="meta-row">
+        <div><div class="k">Ubicación</div>España</div>
+        <div><div class="k">Idiomas</div>Español · Inglés</div>
+        <div><div class="k">Ahora en</div>Alibaba Group — Miravia</div>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-secondary" href="#contacto">Escríbeme</a>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill">UX/UI</span>
+        <span class="skill">User Research</span>
+        <span class="skill">Content Strategy</span>
+        <span class="skill">Arquitectura de la información</span>
+        <span class="skill">Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experiencia">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="idx">01</div>
+        <div>
+          <h2>Experiencia</h2>
+          <p>Cuatro años moviéndome entre el contenido, la investigación y el producto.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="job">
+          <div class="when">Jul 2025 — Presente<br>1 año 3 meses</div>
+          <div>
+            <div class="role">UX &amp; Content Product Designer</div>
+            <div class="org">Alibaba Group <span style="color:var(--text-soft); font-weight:400;">· vía General Technologies Consulting</span></div>
+            <p class="desc">Creación de contenido end-to-end para el sitio de Miravia, en inglés y español, conectando estrategia de contenido con diseño de producto.</p>
+            <div class="loc">Remoto</div>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">Mar 2024 — Jul 2025<br>1 año 5 meses</div>
+          <div>
+            <div class="role">UX Content Designer — HMI CUPRA</div>
+            <div class="org">arttalo TECH</div>
+            <p class="desc">Contenido centrado en la persona usuaria para el sistema de infoentretenimiento (HMI). Contenido para mercados globales: traducción y localización en 33 idiomas.</p>
+            <div class="loc">Barcelona, Cataluña</div>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="when">Jun 2022 — Jun 2023<br>1 año 1 mes</div>
+          <div>
+            <div class="role">Guest Communicator Coordinator</div>
+            <div class="org">Sanders</div>
+            <p class="desc">Coordinación de comunicación con huéspedes; primeros pasos en escritura orientada a experiencia de usuario.</p>
+            <div class="loc">Málaga, Andalucía</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-strip">
+        <div class="edu-card">
+          <div class="school">NEOLAND</div>
+          <div class="deg">UX/UI Designer</div>
+          <div class="when">Jun 2023 — Presente</div>
+        </div>
+        <div class="edu-card">
+          <div class="school">Universidad de Málaga</div>
+          <div class="deg">Grado en Estudios Ingleses</div>
+          <div class="when">Sep 2019 — Jun 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="proyectos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="idx">02</div>
+        <div>
+          <h2>Proyectos</h2>
+          <p>Una muestra de trabajo reciente, de producto con IA en Miravia a un proyecto de bootcamp sobre comunicación interna.</p>
+        </div>
+      </div>
+
+      <div class="proj-list">
+        <article class="proj">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--accent), var(--accent2));">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 20 L21 20 M14 25 L26 25" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="33" cy="18" r="3" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
+          </div>
+          <div>
+            <div class="num">01</div>
+            <h3>AI-Assisted Product Listing</h3>
+            <div class="proj-meta">Seller Center · Miravia · 2025–26</div>
+            <p class="desc">Contenido y flujo para el asistente de IA que ayuda a los sellers de Miravia a crear fichas de producto más rápidas y consistentes en varios idiomas.</p>
+            <div class="tag-row">
+              <span class="tag">IA</span>
+              <span class="tag">Content Design</span>
+              <span class="tag">Seller Center</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--accent2), var(--text));">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 17 L24 24 L29 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
+          </div>
+          <div>
+            <div class="num">02</div>
+            <h3>AI Skill Hub</h3>
+            <div class="proj-meta">Seller Center · Miravia · Beta</div>
+            <p class="desc">Centro de aprendizaje guiado por IA dentro del Seller Center, pensado para que los sellers resuelvan dudas y adopten nuevas funciones sin fricción.</p>
+            <div class="tag-row">
+              <span class="tag">IA</span>
+              <span class="tag">Onboarding</span>
+              <span class="tag">Seller Center</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--text), var(--accent));">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="15" y="6" width="18" height="32" rx="3" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M20 15 L28 15 M20 21 L28 21 M20 27 L25 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
+          </div>
+          <div>
+            <div class="num">03</div>
+            <h3>ADISK</h3>
+            <div class="proj-meta">App móvil · Bootcamp NEOLAND · 2023</div>
+            <p class="desc">Proyecto de bootcamp centrado en Design Thinking para transformar la comunicación interna de un equipo a través de una app móvil.</p>
+            <div class="tag-row">
+              <span class="tag">Design Thinking</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">UX Research</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="wrap">
+      <div class="card">
+        <div class="eyebrow">Contacto</div>
+        <h2 style="margin-top:14px;">Hablemos</h2>
+        <p>¿Un proyecto, una vacante o simplemente charlar sobre diseño y contenido? Escríbeme, respondo siempre.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/consuelo-ayllón-garcía-a37b59122/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <span>© <span id="year"></span> Consuelo Ayllón García</span>
+        <span>Product Designer — Content &amp; IA</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var menuBtn = document.getElementById('menu-btn');
+  var navLinks = document.getElementById('nav-links');
+  menuBtn.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('mobile-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open){
+      navLinks.style.cssText = 'display:flex; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg-alt); border-bottom:1px solid var(--border); padding:8px 22px 16px;';
+    } else {
+      navLinks.style.cssText = '';
+    }
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('mobile-open');
+      navLinks.style.cssText = '';
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  var sectionIds = ['perfil','experiencia','proyectos','contacto'];
+  var sections = sectionIds.map(function(id){ return document.getElementById(id); });
+  var links = Array.prototype.slice.call(document.querySelectorAll('#nav-links a'));
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx = sections.indexOf(entry.target);
+        if (idx === -1 || !entry.isIntersecting) return;
+        links.forEach(function(l){ l.classList.remove('active'); });
+        if (links[idx]) links[idx].classList.add('active');
+      });
+    }, { rootMargin:'-40% 0px -55% 0px', threshold:0 });
+    sections.forEach(function(s){ if (s) io.observe(s); });
+  }
+</script>
+</body>
+</html>
