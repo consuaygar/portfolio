@@ -158,8 +158,9 @@
   .card-row{
     display:grid; grid-template-columns:170px 1fr; gap:32px;
     background:var(--bg-alt); padding:36px;
-    align-items:center;
+    align-items:start;
   }
+  .card-row .thumb{ margin-top:2px; }
   .card-row .thumb{
     aspect-ratio:4/3; border-radius:10px; position:relative; overflow:hidden;
     display:flex; align-items:center; justify-content:center;
@@ -177,6 +178,35 @@
     font-family:var(--font-mono); font-size:.68rem; padding:5px 11px;
     border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
   }
+
+  .case-toggle{
+    margin-top:18px; display:inline-flex; align-items:center; gap:6px;
+    background:none; border:none; padding:0; cursor:pointer;
+    font-family:var(--font-body); font-weight:600; font-size:.85rem; color:var(--accent);
+  }
+  .case-toggle:hover{ color:var(--accent-strong); }
+  .case-toggle svg{ transition:transform .25s ease; flex:0 0 auto; }
+  .case-toggle[aria-expanded="true"] svg{ transform:rotate(180deg); }
+
+  .case-detail{ overflow:hidden; max-height:0; transition:max-height .4s ease; }
+  .case-detail.open{ max-height:2400px; }
+  .case-detail-inner{ padding-top:28px; margin-top:22px; border-top:1px solid var(--border); }
+  .case-sub{ margin-bottom:24px; }
+  .case-sub:last-child{ margin-bottom:0; }
+  .case-sub .case-label{
+    font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--text-soft); display:block; margin-bottom:8px;
+  }
+  .case-sub p{ font-size:.9rem; line-height:1.65; color:var(--text-soft); max-width:64ch; }
+  .case-sub p strong, .case-sub li strong{ color:var(--text); font-weight:600; }
+  .case-sub ol, .case-sub ul{ padding-left:18px; }
+  .case-sub li{ font-size:.9rem; line-height:1.6; color:var(--text-soft); margin-bottom:8px; }
+  .case-sub li:last-child{ margin-bottom:0; }
+  .stat-row{ display:flex; gap:36px; flex-wrap:wrap; }
+  .stat-row .stat .n{ font-family:var(--font-display); font-weight:700; font-size:1.9rem; color:var(--accent); line-height:1; }
+  .stat-row .stat .l{ font-size:.78rem; color:var(--text-soft); margin-top:6px; max-width:16ch; }
+  .case-sub a.case-link{ font-size:.85rem; font-weight:600; color:var(--accent); text-decoration:none; }
+  .case-sub a.case-link:hover{ text-decoration:underline; }
 
   /* ---------- experience (small square cards) ---------- */
   .exp-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:16px; }
@@ -422,6 +452,38 @@
               <span class="tag">Arquitectura de la información</span>
               <span class="tag">EN · ES · IT</span>
             </div>
+            <button class="case-toggle" aria-expanded="false">
+              <span class="label-text">Ver caso completo</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4"/></svg>
+            </button>
+            <div class="case-detail">
+              <div class="case-detail-inner">
+                <div class="case-sub">
+                  <span class="case-label">El problema</span>
+                  <p>Las entrevistas a sellers de Miravia revelaron el mismo problema una y otra vez: publicar un producto manualmente era lento y confuso, con un formulario demasiado largo. Algunos sellers nuevos dijeron que el proceso les hacía sentir «desesperados» antes de publicar un solo producto.</p>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Proceso — tres fases, guiadas por datos</span>
+                  <ol>
+                    <li><strong>Caja de publicación con IA.</strong> Sustituimos el formulario largo por una sola caja abierta; la IA repartía el contenido en los campos correctos.</li>
+                    <li><strong>Refinamos la caja.</strong> Hicimos visible la sección de fotos y cambiamos un panel de «Tips» por 3 pasos claros con ejemplos reales.</li>
+                    <li><strong>Datos tras el lanzamiento.</strong> La pregunta pasó de «¿funciona?» a «¿lo encuentran y confían en ello?». La falta de feedback durante el procesamiento de la IA generaba abandono.</li>
+                  </ol>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Resultado — un mes tras el lanzamiento completo</span>
+                  <div class="stat-row">
+                    <div class="stat"><div class="n">95%</div><div class="l">Nunca hicieron clic en el nuevo punto de entrada</div></div>
+                    <div class="stat"><div class="n">56%</div><div class="l">Abandonaron antes de publicar</div></div>
+                    <div class="stat"><div class="n">74%</div><div class="l">Retención tras el primer éxito</div></div>
+                  </div>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Reflexión</span>
+                  <p>No fue un solo fallo, sino dos problemas superpuestos: los sellers no encontraban la función, y quienes la encontraban no confiaban lo suficiente para terminar. El <strong>74% de retención</strong> fue la señal real: la función funcionaba, el primer intento solo necesitaba transmitir confianza.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -439,6 +501,33 @@
               <span class="tag">Content Design</span>
               <span class="tag">Legal &amp; Trust</span>
             </div>
+            <button class="case-toggle" aria-expanded="false">
+              <span class="label-text">Ver caso completo</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4"/></svg>
+            </button>
+            <div class="case-detail">
+              <div class="case-detail-inner">
+                <div class="case-sub">
+                  <span class="case-label">El problema</span>
+                  <p>El Seller Center dependía de tareas manuales repetitivas —sobre todo exportaciones de datos— y conectar con un ERP requería conocimientos técnicos que muchos sellers no tenían. La tensión real: había que salir de la plataforma para configurar el Skill en un agente de IA externo, algo difícil para usuarios no técnicos y necesario por limitaciones de presupuesto.</p>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Proceso — validar antes de construir</span>
+                  <p>Probamos una versión inicial y otra refinada con instrucciones más claras y texto legal, para detectar problemas antes de cerrar la dirección final.</p>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Hallazgos de investigación</span>
+                  <div class="stat-row">
+                    <div class="stat"><div class="n">8/10</div><div class="l">Sellers encontraron el hub fácilmente</div></div>
+                    <div class="stat"><div class="n">5/10</div><div class="l">Les preocupaba compartir datos con terceros</div></div>
+                  </div>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Reflexión</span>
+                  <p>Instrucciones más claras y FAQs mejoraron la experiencia, pero muchos sellers seguían esperando que la IA estuviera integrada en el Seller Center. Una integración nativa no era posible por <strong>restricciones de presupuesto</strong>, así que el foco pasó a reducir la confusión y generar confianza dentro de esas limitaciones.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -455,6 +544,37 @@
               <span class="tag">Design Thinking</span>
               <span class="tag">Mobile</span>
               <span class="tag">UX Research</span>
+            </div>
+            <button class="case-toggle" aria-expanded="false">
+              <span class="label-text">Ver caso completo</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4"/></svg>
+            </button>
+            <div class="case-detail">
+              <div class="case-detail-inner">
+                <div class="case-sub">
+                  <span class="case-label">El problema</span>
+                  <p>Las herramientas de comunicación de los trabajadores ferroviarios de ADIF estaban desactualizadas e ineficientes. La información se movía lentamente entre turnos y la coordinación fallaba justo en los momentos de más presión.</p>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Proceso</span>
+                  <p>Proceso completo de Design Thinking en un sprint de dos semanas: investigación de campo en la estación de Atocha-Cercanías, encuestas y entrevistas, síntesis en persona y journey map, y prototipado con tests de usabilidad antes de la UI final.</p>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">La solución</span>
+                  <ul>
+                    <li>Una única app instalada en todos los teléfonos de la empresa</li>
+                    <li>Fichaje de turno, alertas de incidencias y calendario de turnos</li>
+                    <li>Visibilidad de quién está de guardia y llamadas internas</li>
+                  </ul>
+                </div>
+                <div class="case-sub">
+                  <span class="case-label">Reflexión</span>
+                  <p>ADISK se diseñó como un primer paso, no una solución completa. Centrarme solo en la UI reveló una limitación importante: ingeniería y operaciones debían implicarse antes para entender qué era realmente posible.</p>
+                </div>
+                <div class="case-sub">
+                  <a class="case-link" href="https://medium.com/@consuaygar/adisk-a-design-thinking-tale-of-transformative-internal-communication-f56abcd9d402" target="_blank" rel="noopener">Lee el proceso completo en Medium →</a>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -517,6 +637,16 @@
     }, { rootMargin:'-40% 0px -55% 0px', threshold:0 });
     sections.forEach(function(s){ if (s) io.observe(s); });
   }
+
+  document.querySelectorAll('.case-toggle').forEach(function(btn){
+    var detail = btn.nextElementSibling;
+    var label = btn.querySelector('.label-text');
+    btn.addEventListener('click', function(){
+      var open = detail.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      label.textContent = open ? 'Ocultar caso' : 'Ver caso completo';
+    });
+  });
 </script>
 </body>
 </html>
