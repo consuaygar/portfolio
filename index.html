@@ -153,54 +153,46 @@
   .section-head h2{ font-size:clamp(1.6rem, 1.3rem + 1vw, 2.1rem); font-weight:600; line-height:1.15; }
   .section-head p{ color:var(--text-soft); margin-top:10px; max-width:56ch; }
 
-  /* ---------- experience ---------- */
-  .timeline{ display:flex; flex-direction:column; }
-  .job{
-    display:grid; grid-template-columns:190px 1fr; gap:28px;
-    padding:28px 0; border-top:1px solid var(--border);
-  }
-  .timeline .job:last-child{ border-bottom:1px solid var(--border); }
-  .job .when{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-soft); line-height:1.6; }
-  .job .role{ font-weight:600; font-size:1.05rem; }
-  .job .org{ color:var(--accent); font-size:.92rem; font-weight:500; margin-top:2px; }
-  .job .desc{ margin-top:10px; color:var(--text-soft); font-size:.92rem; max-width:60ch; }
-  .job .loc{ font-size:.78rem; color:var(--text-soft); margin-top:8px; }
-
-  .edu-strip{
-    margin-top:8px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;
-  }
-  .edu-card{
-    border:1px solid var(--border); border-radius:12px; background:var(--bg-alt);
-    padding:20px 22px;
-  }
-  .edu-card .school{ font-weight:600; font-size:.94rem; }
-  .edu-card .deg{ color:var(--text-soft); font-size:.86rem; margin-top:4px; }
-  .edu-card .when{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:10px; }
-
-  /* ---------- projects ---------- */
-  .proj-list{ display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
-  .proj{
+  /* ---------- card list (shared by experience & projects) ---------- */
+  .card-list{ display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+  .card-row{
     display:grid; grid-template-columns:170px 1fr; gap:32px;
     background:var(--bg-alt); padding:36px;
     align-items:center;
   }
-  .proj .thumb{
+  .card-row .thumb{
     aspect-ratio:4/3; border-radius:10px; position:relative; overflow:hidden;
     display:flex; align-items:center; justify-content:center;
   }
-  .proj .thumb svg{ width:46%; height:46%; }
-  .proj .num{
+  .card-row .thumb svg{ width:46%; height:46%; }
+  .card-row .num{
     font-family:var(--font-mono); font-size:.72rem; color:var(--accent);
     margin-bottom:8px;
   }
-  .proj h3{ font-size:1.35rem; font-weight:600; }
-  .proj .proj-meta{ font-family:var(--font-mono); font-size:.74rem; color:var(--text-soft); margin-top:6px; }
-  .proj p.desc{ margin-top:14px; color:var(--text-soft); font-size:.92rem; max-width:62ch; }
-  .proj .tag-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
-  .proj .tag{
+  .card-row h3{ font-size:1.35rem; font-weight:600; }
+  .card-row .meta{ font-family:var(--font-mono); font-size:.74rem; color:var(--text-soft); margin-top:6px; }
+  .card-row p.desc{ margin-top:14px; color:var(--text-soft); font-size:.92rem; max-width:62ch; }
+  .card-row .tag-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+  .card-row .tag{
     font-family:var(--font-mono); font-size:.68rem; padding:5px 11px;
     border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
   }
+
+  .edu-strip{
+    margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;
+  }
+  .edu-card{
+    border:1px solid var(--border); border-radius:12px; background:var(--bg-alt);
+    padding:20px 22px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .edu-card .icon{
+    width:34px; height:34px; border-radius:8px; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; background:var(--bg-dim);
+  }
+  .edu-card .icon svg{ width:17px; height:17px; }
+  .edu-card .school{ font-weight:600; font-size:.94rem; }
+  .edu-card .deg{ color:var(--text-soft); font-size:.86rem; margin-top:4px; }
+  .edu-card .when{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:10px; }
 
   /* ---------- contact / footer ---------- */
   footer#contacto{ padding:80px 0 48px; }
@@ -224,8 +216,9 @@
     section.block{ padding:56px 0; }
     .job{ grid-template-columns:1fr; gap:6px; }
     .edu-strip{ grid-template-columns:1fr; }
-    .proj{ grid-template-columns:1fr; padding:26px; }
-    .proj .thumb{ max-width:160px; }
+    .card-row{ grid-template-columns:1fr; padding:26px; }
+    .card-row .thumb{ max-width:160px; }
+    .edu-card{ flex-direction:column; }
     footer#contacto .card{ padding:40px 26px; }
   }
 </style>
@@ -298,51 +291,82 @@
         </div>
       </div>
 
-      <div class="timeline">
-        <div class="job">
-          <div class="when">Jul 2025 — Presente<br>1 año 2 meses</div>
-          <div>
-            <div class="role">UX Product Content Designer</div>
-            <div class="org">Miravia · AliExpress</div>
-            <p class="desc">Diseño y optimización de la experiencia de las plataformas de sellers de AliExpress y Miravia: research, arquitectura de la información, contenido y testing de usabilidad, en colaboración con equipos de Europa y China.</p>
-            <div class="loc">Equipo internacional · Europa &amp; China</div>
+      <div class="card-list">
+        <article class="card-row">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--accent), var(--text));">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l2 6H12l2-6Z" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 22v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V22" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M19 27v4M29 27v4" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
-        </div>
+          <div>
+            <div class="num">Jul 2025 — Presente · 1 año 2 meses</div>
+            <h3>UX Product Content Designer</h3>
+            <div class="meta">Miravia · AliExpress — Equipo internacional (Europa &amp; China)</div>
+            <p class="desc">Diseño y optimización de la experiencia de las plataformas de sellers de AliExpress y Miravia: research, arquitectura de la información, contenido y testing de usabilidad.</p>
+            <div class="tag-row">
+              <span class="tag">UX Research</span>
+              <span class="tag">Arquitectura de la información</span>
+              <span class="tag">Usabilidad</span>
+            </div>
+          </div>
+        </article>
 
-        <div class="job">
-          <div class="when">Feb 2024 — Jul 2025<br>1 año 5 meses</div>
-          <div>
-            <div class="role">UX Product Content Designer — HMI CUPRA</div>
-            <div class="org">arttalo TECH</div>
-            <p class="desc">Contenido y soluciones UX centradas en la persona usuaria para sistemas de infoentretenimiento (HMI). Gestión de localización en 33 idiomas, testing de usabilidad y evaluaciones heurísticas, junto a equipos de producto y desarrollo.</p>
-            <div class="loc">Barcelona, Cataluña</div>
+        <article class="card-row">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--accent2), var(--accent));">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="24" cy="24" r="3.5" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 11v5M24 32v5M37 24h-5M16 24h-5" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
-        </div>
+          <div>
+            <div class="num">Feb 2024 — Jul 2025 · 1 año 5 meses</div>
+            <h3>UX Product Content Designer — HMI CUPRA</h3>
+            <div class="meta">arttalo TECH — Barcelona, Cataluña</div>
+            <p class="desc">Contenido y soluciones UX centradas en la persona usuaria para sistemas de infoentretenimiento (HMI), con testing de usabilidad y evaluaciones heurísticas.</p>
+            <div class="tag-row">
+              <span class="tag">Automoción</span>
+              <span class="tag">Localización · 33 idiomas</span>
+              <span class="tag">Usability Testing</span>
+            </div>
+          </div>
+        </article>
 
-        <div class="job">
-          <div class="when">Nov 2023 — Feb 2024<br>3 meses</div>
-          <div>
-            <div class="role">Product Designer</div>
-            <div class="org">Pontia Tech</div>
-            <p class="desc">Contenido web, copywriting y comunicación digital alineados con objetivos de negocio y de usuario, apoyada en datos de Google Analytics para optimizar journeys y consistencia de contenido.</p>
+        <article class="card-row">
+          <div class="thumb" style="background:linear-gradient(135deg, var(--text), var(--accent2));">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="9" width="24" height="30" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M17 18h14M17 24h14M17 30h9" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
-        </div>
+          <div>
+            <div class="num">Nov 2023 — Feb 2024 · 3 meses</div>
+            <h3>Product Designer</h3>
+            <div class="meta">Pontia Tech</div>
+            <p class="desc">Contenido web, copywriting y comunicación digital alineados con objetivos de negocio y de usuario, apoyada en datos de Google Analytics.</p>
+            <div class="tag-row">
+              <span class="tag">Content Design</span>
+              <span class="tag">Google Analytics</span>
+              <span class="tag">Copywriting</span>
+            </div>
+          </div>
+        </article>
       </div>
 
       <div class="edu-strip" style="margin-top:28px;">
         <div class="edu-card">
-          <div class="school">NEOLAND</div>
-          <div class="deg">UX/UI Design Bootcamp</div>
-          <div class="when">Madrid · 2023</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4 2 8l10 4 10-4-10-4Z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
+          <div>
+            <div class="school">NEOLAND</div>
+            <div class="deg">UX/UI Design Bootcamp</div>
+            <div class="when">Madrid · 2023</div>
+          </div>
         </div>
         <div class="edu-card">
-          <div class="school">Universidad de Málaga</div>
-          <div class="deg">Grado en Estudios Ingleses</div>
-          <div class="when">Sep 2019 — Jun 2023</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h11l5 5v11H4V4Z" stroke="var(--accent)" stroke-width="1.5"/><path d="M8 10h7M8 14h7M8 18h4" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
+          <div>
+            <div class="school">Universidad de Málaga</div>
+            <div class="deg">Grado en Estudios Ingleses</div>
+            <div class="when">Sep 2019 — Jun 2023</div>
+          </div>
         </div>
         <div class="edu-card">
-          <div class="school">Conservatorio Superior de Música de Málaga</div>
-          <div class="deg">Grado en Música — Violín</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18V6l10-2v12" stroke="var(--accent)" stroke-width="1.5"/><circle cx="6.5" cy="18" r="2.5" stroke="var(--accent)" stroke-width="1.5"/><circle cx="16.5" cy="16" r="2.5" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
+          <div>
+            <div class="school">Conservatorio Superior de Música de Málaga</div>
+            <div class="deg">Grado en Música — Violín</div>
+          </div>
         </div>
       </div>
     </div>
@@ -358,15 +382,15 @@
         </div>
       </div>
 
-      <div class="proj-list">
-        <article class="proj">
+      <div class="card-list">
+        <article class="card-row">
           <div class="thumb" style="background:linear-gradient(135deg, var(--accent), var(--accent2));">
             <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 20 L21 20 M14 25 L26 25" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="33" cy="18" r="3" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">01</div>
             <h3>AI-Assisted Product Listing</h3>
-            <div class="proj-meta">Seller Center · Miravia · 2025–26</div>
+            <div class="meta">Seller Center · Miravia · 2025–26</div>
             <p class="desc">Contenido y flujo para el asistente de IA que ayuda a los sellers de Miravia a crear fichas de producto más rápidas y consistentes en varios idiomas.</p>
             <div class="tag-row">
               <span class="tag">IA</span>
@@ -376,14 +400,14 @@
           </div>
         </article>
 
-        <article class="proj">
+        <article class="card-row">
           <div class="thumb" style="background:linear-gradient(135deg, var(--accent2), var(--text));">
             <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 17 L24 24 L29 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">02</div>
             <h3>AI Skill Hub</h3>
-            <div class="proj-meta">Seller Center · Miravia · Beta</div>
+            <div class="meta">Seller Center · Miravia · Beta</div>
             <p class="desc">Centro de aprendizaje guiado por IA dentro del Seller Center, pensado para que los sellers resuelvan dudas y adopten nuevas funciones sin fricción.</p>
             <div class="tag-row">
               <span class="tag">IA</span>
@@ -393,14 +417,14 @@
           </div>
         </article>
 
-        <article class="proj">
+        <article class="card-row">
           <div class="thumb" style="background:linear-gradient(135deg, var(--text), var(--accent));">
             <svg viewBox="0 0 48 48" fill="none"><rect x="15" y="6" width="18" height="32" rx="3" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M20 15 L28 15 M20 21 L28 21 M20 27 L25 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
           </div>
           <div>
             <div class="num">03</div>
             <h3>ADISK</h3>
-            <div class="proj-meta">App móvil · Bootcamp NEOLAND · 2023</div>
+            <div class="meta">App móvil · Bootcamp NEOLAND · 2023</div>
             <p class="desc">Proyecto de bootcamp centrado en Design Thinking para transformar la comunicación interna de un equipo a través de una app móvil.</p>
             <div class="tag-row">
               <span class="tag">Design Thinking</span>
