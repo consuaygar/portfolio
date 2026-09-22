@@ -106,6 +106,11 @@
 
   /* ---------- hero ---------- */
   section#perfil{ padding:88px 0 64px; border-bottom:1px solid var(--border); }
+  .hero-grid{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start; }
+  .hero-portrait{
+    width:220px; display:block; margin-top:4px;
+    filter:drop-shadow(0 14px 28px rgba(20,22,27,.18));
+  }
   #perfil h1{
     font-weight:900; font-size:clamp(2.4rem, 1.7rem + 3vw, 4.1rem);
     line-height:1.02; letter-spacing:-.01em; max-width:16ch;
@@ -238,6 +243,25 @@
     margin-top:36px; font-size:.78rem; color:var(--text-soft); flex-wrap:wrap; gap:12px;
   }
 
+  /* ---------- case images ---------- */
+  .case-img{
+    width:100%; display:block; margin:28px 0;
+    border-radius:12px; border:1px solid var(--border);
+    box-shadow:0 1px 3px rgba(20,22,27,.06);
+  }
+  .case-img-float{
+    width:100%; max-width:560px; display:block; margin:28px auto;
+    filter:drop-shadow(0 10px 24px rgba(20,22,27,.14));
+  }
+
+  /* ---------- language toggle ---------- */
+  .lang-toggle{
+    font-family:var(--font-mono); font-weight:500; font-size:.75rem;
+    background:none; border:1px solid var(--border); border-radius:999px;
+    padding:6px 12px; color:var(--text); cursor:pointer; letter-spacing:.04em;
+  }
+  .lang-toggle:hover{ border-color:var(--accent); color:var(--accent); }
+
   @media (max-width: 860px){
     .wrap, .nav-row{ padding-left:22px; padding-right:22px; }
     nav.links{ display:none; }
@@ -247,6 +271,8 @@
     .card-row{ grid-template-columns:1fr; padding:26px; }
     .card-row .thumb{ max-width:160px; }
     footer#contacto .card{ padding:40px 26px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-portrait{ width:150px; order:-1; }
   }
 </style>
 </head>
@@ -263,12 +289,13 @@
       <span>Consuelo</span>
     </a>
     <nav class="links" id="nav-links">
-      <a href="#perfil">Perfil</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#perfil" id="t-nav-perfil">Perfil</a>
+      <a href="#experiencia" id="t-nav-experiencia">Experiencia</a>
+      <a href="#proyectos" id="t-nav-proyectos">Proyectos</a>
+      <a href="#contacto" id="t-nav-contacto">Contacto</a>
     </nav>
-    <a class="nav-cta" href="mailto:consuaygar@gmail.com">Escríbeme</a>
+    <button class="lang-toggle" id="lang-toggle">EN</button>
+    <a class="nav-cta" href="mailto:consuaygar@gmail.com" id="t-nav-cta">Escríbeme</a>
     <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6"/></svg>
     </button>
@@ -278,31 +305,36 @@
 <main>
   <section id="perfil">
     <div class="wrap">
-      <div class="eyebrow">UX/UI · Research · End-to-end</div>
-      <h1 style="margin-top:20px;">Consuelo Ayllón</h1>
-      <div class="hero-role">Product Designer</div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">UX/UI · Research · End-to-end</div>
+          <h1 style="margin-top:20px;">Consuelo Ayllón</h1>
+          <div class="hero-role">Product Designer</div>
 
-      <div class="lede-block">
-        <p>Diseño interfaces para productos digitales end-to-end. En aprendizaje constante, y reforzando la IA como herramienta de trabajo.</p>
-      </div>
+          <div class="lede-block">
+            <p id="t-hero-p">Diseño interfaces para productos digitales end-to-end. En aprendizaje constante, y reforzando la IA como herramienta de trabajo.</p>
+          </div>
 
-      <div class="meta-row">
-        <div><div class="k">Ubicación</div>España</div>
-        <div><div class="k">Idiomas</div>Español · Inglés</div>
-      </div>
+          <div class="meta-row">
+            <div><div class="k" id="t-meta-k1">Ubicación</div><span id="t-meta-v1">España</span></div>
+            <div><div class="k" id="t-meta-k2">Idiomas</div><span id="t-meta-v2">Español · Inglés</span></div>
+          </div>
 
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-        <a class="btn btn-secondary" href="#contacto">Escríbeme</a>
-      </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#proyectos" id="t-cta-1">Ver proyectos</a>
+            <a class="btn btn-secondary" href="#contacto" id="t-cta-2">Escríbeme</a>
+          </div>
 
-      <div class="skill-row">
-        <span class="skill">UX Research</span>
-        <span class="skill">Prototipado</span>
-        <span class="skill">Product Strategy</span>
-        <span class="skill">Usability Testing</span>
-        <span class="skill">Arquitectura de la información</span>
-        <span class="skill">Figma</span>
+          <div class="skill-row">
+            <span class="skill">UX Research</span>
+            <span class="skill" id="t-skill-2">Prototipado</span>
+            <span class="skill">Product Strategy</span>
+            <span class="skill">Usability Testing</span>
+            <span class="skill" id="t-skill-5">Arquitectura de la información</span>
+            <span class="skill">Figma</span>
+          </div>
+        </div>
+        <img class="hero-portrait" src="images/portrait.webp" alt="Retrato de Consuelo Ayllón García">
       </div>
     </div>
   </section>
@@ -312,7 +344,7 @@
       <div class="section-head">
         <div class="idx">01</div>
         <div>
-          <h2>Experiencia</h2>
+          <h2 id="t-exp-h2">Experiencia</h2>
         </div>
       </div>
 
@@ -325,12 +357,12 @@
             <h3>UX Product Content Designer</h3>
             <div class="meta">Miravia · AliExpress</div>
           </div>
-          <p class="desc">Research, arquitectura de la información y contenido para las plataformas de sellers de AliExpress y Miravia.</p>
+          <p class="desc" id="t-exp1-desc">Research, arquitectura de la información y contenido para las plataformas de sellers de AliExpress y Miravia.</p>
           <div class="tag-row">
             <span class="tag">UX Research</span>
-            <span class="tag">IA</span>
+            <span class="tag" id="t-exp1-tag2">IA</span>
             <span class="tag">Information Architecture</span>
-            <span class="tag">Europa · China</span>
+            <span class="tag" id="t-exp1-tag4">Europa · China</span>
           </div>
         </article>
 
@@ -342,9 +374,9 @@
             <h3>UX Product Content Designer — HMI CUPRA</h3>
             <div class="meta">arttalo TECH - SEAT&amp;CUPRA</div>
           </div>
-          <p class="desc">Contenido y UX para sistemas de infoentretenimiento (HMI) en mercados globales.</p>
+          <p class="desc" id="t-exp2-desc">Contenido y UX para sistemas de infoentretenimiento (HMI) en mercados globales.</p>
           <div class="tag-row">
-            <span class="tag">Automoción</span>
+            <span class="tag" id="t-exp2-tag1">Automoción</span>
             <span class="tag">Barcelona</span>
             <span class="tag">Content</span>
             <span class="tag">UX Research</span>
@@ -360,7 +392,7 @@
             <h3>Product Designer</h3>
             <div class="meta">Pontia Tech</div>
           </div>
-          <p class="desc">Contenido web y comunicación digital basados en datos, tras el bootcamp de UX/UI.</p>
+          <p class="desc" id="t-exp3-desc">Contenido web y comunicación digital basados en datos, tras el bootcamp de UX/UI.</p>
           <div class="tag-row">
             <span class="tag">Content Design</span>
             <span class="tag">Analytics</span>
@@ -377,8 +409,8 @@
       <div class="section-head">
         <div class="idx">02</div>
         <div>
-          <h2>Proyectos</h2>
-          <p>Una muestra de trabajo reciente, de producto con IA en Miravia a un proyecto de bootcamp sobre comunicación interna.</p>
+          <h2 id="t-proj-h2">Proyectos</h2>
+          <p id="t-proj-p">Una muestra de trabajo reciente, de producto con IA en Miravia a un proyecto de bootcamp sobre comunicación interna.</p>
         </div>
       </div>
 
@@ -391,13 +423,13 @@
             <div class="num">01</div>
             <h3>AI-Assisted Product Listing</h3>
             <div class="meta">Seller Center · Miravia · 2025–26</div>
-            <p class="desc">Rediseño del flujo de publicación de productos en el Seller Center de Miravia, incorporando un asistente de IA que ayuda a los sellers a publicar productos sin perderse en un formulario largo y lleno de campos desconocidos. Iterado en varias fases, cada una validada con research y testing de usabilidad.</p>
+            <p class="desc" id="t-p1-desc">Rediseño del flujo de publicación de productos en el Seller Center de Miravia, incorporando un asistente de IA que ayuda a los sellers a publicar productos sin perderse en un formulario largo y lleno de campos desconocidos. Iterado en varias fases, cada una validada con research y testing de usabilidad.</p>
             <div class="tag-row">
-              <span class="tag">IA</span>
+              <span class="tag" id="t-p1-tag1">IA</span>
               <span class="tag">Arquitectura de la información</span>
               <span class="tag">EN · ES · IT</span>
             </div>
-            <a class="case-toggle" href="#case-01">Ver proyecto →</a>
+            <a class="case-toggle" href="#case-01" id="t-view-1">Ver proyecto →</a>
           </div>
         </article>
 
@@ -409,13 +441,13 @@
             <div class="num">02</div>
             <h3>AI Skill Hub</h3>
             <div class="meta">Seller Center · Miravia · Beta</div>
-            <p class="desc">Skill Hub es un marketplace de "skills" que permite a los sellers de Miravia conectar sus agentes de IA externos a tareas del Seller Center. Cada skill automatiza tareas manuales que podían llegar a ser repetitivas y quitarles mucho tiempo a los sellers.</p>
+            <p class="desc" id="t-p2-desc">Skill Hub es un marketplace de "skills" que permite a los sellers de Miravia conectar sus agentes de IA externos a tareas del Seller Center. Cada skill automatiza tareas manuales que podían llegar a ser repetitivas y quitarles mucho tiempo a los sellers.</p>
             <div class="tag-row">
-              <span class="tag">IA</span>
+              <span class="tag" id="t-p2-tag1">IA</span>
               <span class="tag">Content Design</span>
               <span class="tag">Legal &amp; Trust</span>
             </div>
-            <a class="case-toggle" href="#case-02">Ver proyecto →</a>
+            <a class="case-toggle" href="#case-02" id="t-view-2">Ver proyecto →</a>
           </div>
         </article>
 
@@ -426,14 +458,14 @@
           <div>
             <div class="num">03</div>
             <h3>ADISK</h3>
-            <div class="meta">App móvil · Bootcamp NEOLAND · 2023</div>
-            <p class="desc">App interna para trabajadores ferroviarios de ADIF, con fichaje de turno, alertas de incidencias, calendario y llamadas internas. Sprint de dos semanas, con investigación de campo en Atocha-Cercanías y proceso completo de Design Thinking.</p>
+            <div class="meta" id="t-p3-meta">App móvil · Bootcamp NEOLAND · 2023</div>
+            <p class="desc" id="t-p3-desc">App interna para trabajadores ferroviarios de ADIF, con fichaje de turno, alertas de incidencias, calendario y llamadas internas. Sprint de dos semanas, con investigación de campo en Atocha-Cercanías y proceso completo de Design Thinking.</p>
             <div class="tag-row">
               <span class="tag">Design Thinking</span>
               <span class="tag">Mobile</span>
               <span class="tag">UX Research</span>
             </div>
-            <a class="case-toggle" href="#case-03">Ver proyecto →</a>
+            <a class="case-toggle" href="#case-03" id="t-view-3">Ver proyecto →</a>
           </div>
         </article>
       </div>
@@ -450,31 +482,32 @@
         </div>
       </div>
       <div class="case-sub">
-        <span class="case-label">El problema</span>
-        <p>Las entrevistas con sellers de Miravia revelaban siempre el mismo problema: publicar un producto a mano era lento y confuso. Era especialmente duro para los sellers nuevos, que se topaban con un formulario larguísimo lleno de campos que no entendían. Algunos llegaron a decir que el proceso les hacía sentir "desesperados" antes incluso de publicar su primer producto.</p>
+        <span class="case-label" id="t-c1-l1">El problema</span>
+        <p id="t-c1-p1">Las entrevistas con sellers de Miravia revelaban siempre el mismo problema: publicar un producto a mano era lento y confuso. Era especialmente duro para los sellers nuevos, que se topaban con un formulario larguísimo lleno de campos que no entendían. Algunos llegaron a decir que el proceso les hacía sentir "desesperados" antes incluso de publicar su primer producto.</p>
       </div>
       <div class="case-sub">
-        <span class="case-label">Proceso — tres fases</span>
-        <ol>
+        <span class="case-label" id="t-c1-l2">Proceso — tres fases</span>
+        <ol id="t-c1-ol">
           <li><strong>Caja para publicar con IA.</strong> Sustituimos el formulario largo por un único campo abierto: el seller escribía y la IA repartía el contenido en los campos correspondientes.</li>
           <li><strong>Refinamos la caja.</strong> Hicimos visible la sección de fotos y cambiamos un panel de "Tips" genérico por 3 pasos claros con ejemplos reales.</li>
           <li><strong>Datos tras el lanzamiento.</strong> La pregunta dejó de ser "¿funciona?" para pasar a "¿lo encuentran y confían en ello?". La falta de feedback mientras la IA procesaba la información estaba generando abandono.</li>
         </ol>
       </div>
+      <img class="case-img-float" src="images/case1-product-description.webp" alt="Mockup de MacBook Pro: editor de descripción de producto y descripción corta generada por IA">
       <div class="case-sub">
-        <span class="case-label">Resultado — un mes tras el lanzamiento completo</span>
+        <span class="case-label" id="t-c1-l3">Resultado — un mes tras el lanzamiento completo</span>
         <div class="stat-row">
-          <div class="stat"><div class="n">95%</div><div class="l">Nunca llegó a hacer clic en el nuevo punto de entrada</div></div>
-          <div class="stat"><div class="n">56%</div><div class="l">Abandonó antes de publicar</div></div>
-          <div class="stat"><div class="n">74%</div><div class="l">Retención tras el primer éxito</div></div>
+          <div class="stat"><div class="n">95%</div><div class="l" id="t-c1-s1">Nunca llegó a hacer clic en el nuevo punto de entrada</div></div>
+          <div class="stat"><div class="n">56%</div><div class="l" id="t-c1-s2">Abandonó antes de publicar</div></div>
+          <div class="stat"><div class="n">74%</div><div class="l" id="t-c1-s3">Retención tras el primer éxito</div></div>
         </div>
       </div>
       <div class="case-sub">
-        <span class="case-label">Reflexión</span>
-        <p>No fue un único fallo, sino dos problemas superpuestos: los sellers no encontraban la función, y los que la encontraban no confiaban lo suficiente como para terminar. El <strong>74% de retención</strong> fue la señal clave: la función funcionaba, lo único que faltaba en el primer intento era transmitir confianza.</p>
+        <span class="case-label" id="t-c1-l4">Reflexión</span>
+        <p id="t-c1-p2">No fue un único fallo, sino dos problemas superpuestos: los sellers no encontraban la función, y los que la encontraban no confiaban lo suficiente como para terminar. El <strong>74% de retención</strong> fue la señal clave: la función funcionaba, lo único que faltaba en el primer intento era transmitir confianza.</p>
       </div>
       <div class="case-sub">
-        <a class="case-link" href="#proyectos">← Volver a proyectos</a>
+        <a class="case-link" href="#proyectos" id="t-back-1">← Volver a proyectos</a>
       </div>
     </div>
   </section>
@@ -489,26 +522,29 @@
         </div>
       </div>
       <div class="case-sub">
-        <span class="case-label">El problema</span>
-        <p>El Seller Center dependía de tareas manuales repetitivas (sobre todo exportaciones de datos) y conectar con un ERP exigía conocimientos técnicos que muchos sellers no tenían. La parte difícil era que había que salir de la plataforma para configurar el Skill en un agente de IA externo, algo poco intuitivo para sellers no técnicos pero necesario por las limitaciones de presupuesto.</p>
+        <span class="case-label" id="t-c2-l1">El problema</span>
+        <p id="t-c2-p1">El Seller Center dependía de tareas manuales repetitivas (sobre todo exportaciones de datos) y conectar con un ERP exigía conocimientos técnicos que muchos sellers no tenían. La parte difícil era que había que salir de la plataforma para configurar el Skill en un agente de IA externo, algo poco intuitivo para sellers no técnicos pero necesario por las limitaciones de presupuesto.</p>
       </div>
       <div class="case-sub">
-        <span class="case-label">Proceso — validar antes de construir</span>
-        <p>Probamos una primera versión y otra refinada, con instrucciones más claras y el texto legal correspondiente, para detectar problemas antes de cerrar la dirección final.</p>
+        <span class="case-label" id="t-c2-l2">Proceso — validar antes de construir</span>
+        <p id="t-c2-p2">Probamos una primera versión y otra refinada, con instrucciones más claras y el texto legal correspondiente, para detectar problemas antes de cerrar la dirección final.</p>
       </div>
+      <img class="case-img" src="images/case2-flow-testing.webp" alt="Dos iteraciones de prototipo probadas con sellers: una versión inicial y otra refinada con instrucciones más claras y texto legal añadido">
       <div class="case-sub">
-        <span class="case-label">Hallazgos de investigación</span>
+        <span class="case-label" id="t-c2-l3">Hallazgos de investigación</span>
         <div class="stat-row">
-          <div class="stat"><div class="n">8/10</div><div class="l">Sellers encontraron el hub sin dificultad</div></div>
-          <div class="stat"><div class="n">5/10</div><div class="l">Les preocupaba compartir datos con terceros</div></div>
+          <div class="stat"><div class="n">8/10</div><div class="l" id="t-c2-s1">Sellers encontraron el hub sin dificultad</div></div>
+          <div class="stat"><div class="n">5/10</div><div class="l" id="t-c2-s2">Les preocupaba compartir datos con terceros</div></div>
         </div>
       </div>
+      <img class="case-img" src="images/case2-skillhub-before-after.webp" alt="Comparativa antes/después de la página Available Skills: la versión anterior frente al nuevo diseño con pasos claros de 'How it works'">
       <div class="case-sub">
-        <span class="case-label">Reflexión</span>
-        <p>Unas instrucciones más claras y las FAQs mejoraron la experiencia, pero muchos sellers seguían esperando que la IA estuviera integrada dentro del Seller Center. Una integración nativa no era viable por <strong>restricciones de presupuesto</strong>, así que el foco pasó a reducir la confusión y generar confianza dentro de esas limitaciones.</p>
+        <span class="case-label" id="t-c2-l4">Reflexión</span>
+        <p id="t-c2-p3">Unas instrucciones más claras y las FAQs mejoraron la experiencia, pero muchos sellers seguían esperando que la IA estuviera integrada dentro del Seller Center. Una integración nativa no era viable por <strong>restricciones de presupuesto</strong>, así que el foco pasó a reducir la confusión y generar confianza dentro de esas limitaciones.</p>
       </div>
+      <img class="case-img" src="images/case2-install-flow.webp" alt="Flujo de instalación de un skill: instalación por comando o manual, pegando el comando en el chat del agente de IA y confirmando la instalación">
       <div class="case-sub">
-        <a class="case-link" href="#proyectos">← Volver a proyectos</a>
+        <a class="case-link" href="#proyectos" id="t-back-2">← Volver a proyectos</a>
       </div>
     </div>
   </section>
@@ -518,35 +554,35 @@
       <div class="section-head">
         <div class="idx">03</div>
         <div>
-          <div class="eyebrow" style="margin-bottom:10px;">App móvil · Bootcamp NEOLAND · 2023</div>
+          <div class="eyebrow" style="margin-bottom:10px;" id="t-c3-meta">App móvil · Bootcamp NEOLAND · 2023</div>
           <h2>ADISK</h2>
         </div>
       </div>
       <div class="case-sub">
-        <span class="case-label">El problema</span>
-        <p>Las herramientas de comunicación de los trabajadores ferroviarios de ADIF estaban desactualizadas y eran poco eficientes. La información circulaba lento entre turnos, y la coordinación fallaba justo en los momentos de más presión.</p>
+        <span class="case-label" id="t-c3-l1">El problema</span>
+        <p id="t-c3-p1">Las herramientas de comunicación de los trabajadores ferroviarios de ADIF estaban desactualizadas y eran poco eficientes. La información circulaba lento entre turnos, y la coordinación fallaba justo en los momentos de más presión.</p>
       </div>
       <div class="case-sub">
-        <span class="case-label">Proceso</span>
-        <p>Proceso completo de Design Thinking en un sprint de dos semanas: investigación de campo en la estación de Atocha-Cercanías, encuestas y entrevistas, síntesis en personas y journey map, y prototipado con tests de usabilidad antes de llegar a la UI final.</p>
+        <span class="case-label" id="t-c3-l2">Proceso</span>
+        <p id="t-c3-p2">Proceso completo de Design Thinking en un sprint de dos semanas: investigación de campo en la estación de Atocha-Cercanías, encuestas y entrevistas, síntesis en personas y journey map, y prototipado con tests de usabilidad antes de llegar a la UI final.</p>
       </div>
       <div class="case-sub">
-        <span class="case-label">La solución</span>
-        <ul>
+        <span class="case-label" id="t-c3-l3">La solución</span>
+        <ul id="t-c3-ul">
           <li>Una única app instalada en todos los teléfonos de la empresa</li>
           <li>Fichaje de turno, alertas de incidencias y calendario de turnos</li>
           <li>Visibilidad de quién está de guardia y llamadas internas</li>
         </ul>
       </div>
       <div class="case-sub">
-        <span class="case-label">Reflexión</span>
-        <p>ADISK se diseñó como un primer paso, no como una solución completa. Diseñar solo la UI no era suficiente: la solución real necesitaba más que una app, incluía sistemas internos y equipos que debían valorarse desde el principio, junto a quienes conocían esa infraestructura.</p>
+        <span class="case-label" id="t-c3-l4">Reflexión</span>
+        <p id="t-c3-p3">ADISK se diseñó como un primer paso, no como una solución completa. Diseñar solo la UI no era suficiente: la solución real necesitaba más que una app, incluía sistemas internos y equipos que debían valorarse desde el principio, junto a quienes conocían esa infraestructura.</p>
       </div>
       <div class="case-sub">
-        <a class="case-link" href="https://medium.com/@consuaygar/adisk-a-design-thinking-tale-of-transformative-internal-communication-f56abcd9d402" target="_blank" rel="noopener">Lee el proceso completo en Medium →</a>
+        <a class="case-link" href="https://medium.com/@consuaygar/adisk-a-design-thinking-tale-of-transformative-internal-communication-f56abcd9d402" target="_blank" rel="noopener" id="t-c3-medium">Lee el proceso completo en Medium →</a>
       </div>
       <div class="case-sub">
-        <a class="case-link" href="#proyectos">← Volver a proyectos</a>
+        <a class="case-link" href="#proyectos" id="t-back-3">← Volver a proyectos</a>
       </div>
     </div>
   </section>
@@ -554,9 +590,9 @@
   <footer id="contacto">
     <div class="wrap">
       <div class="card">
-        <div class="eyebrow">Contacto</div>
-        <h2 style="margin-top:14px;">Hablemos</h2>
-        <p>¿Un proyecto, una vacante o simplemente charlar sobre producto y diseño? Escríbeme, respondo siempre.</p>
+        <div class="eyebrow" id="t-footer-eyebrow">Contacto</div>
+        <h2 style="margin-top:14px;" id="t-footer-h2">Hablemos</h2>
+        <p id="t-footer-p">¿Un proyecto, una vacante o simplemente charlar sobre producto y diseño? Escríbeme, respondo siempre.</p>
         <div class="contact-links">
           <a class="btn btn-primary" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
           <a class="btn btn-secondary" href="https://www.linkedin.com/in/consuelo-ayllón-garcía-a37b59122/" target="_blank" rel="noopener">LinkedIn</a>
@@ -606,6 +642,102 @@
     }, { rootMargin:'-40% 0px -55% 0px', threshold:0 });
     sections.forEach(function(s){ if (s) io.observe(s); });
   }
+
+  var translations = {
+    't-nav-perfil': 'Profile',
+    't-nav-experiencia': 'Experience',
+    't-nav-proyectos': 'Projects',
+    't-nav-contacto': 'Contact',
+    't-nav-cta': 'Get in touch',
+
+    't-hero-p': 'I design interfaces for digital products, end-to-end. Constantly learning, and sharpening AI as a working tool.',
+    't-meta-k1': 'Location',
+    't-meta-v1': 'Spain',
+    't-meta-k2': 'Languages',
+    't-meta-v2': 'Spanish · English',
+    't-cta-1': 'View projects',
+    't-cta-2': 'Get in touch',
+    't-skill-2': 'Prototyping',
+    't-skill-5': 'Information Architecture',
+
+    't-exp-h2': 'Experience',
+    't-exp1-desc': "Research, information architecture, and content for AliExpress and Miravia's seller platforms.",
+    't-exp1-tag2': 'AI',
+    't-exp1-tag4': 'Europe · China',
+    't-exp2-desc': 'Content and UX for infotainment (HMI) systems across global markets.',
+    't-exp2-tag1': 'Automotive',
+    't-exp3-desc': 'Data-driven web content and digital communication, right after the UX/UI bootcamp.',
+
+    't-proj-h2': 'Projects',
+    't-proj-p': 'A sample of recent work, from AI-powered product design at Miravia to a bootcamp project about internal communication.',
+    't-p1-desc': 'Redesign of the product listing flow in Miravia\'s Seller Center, adding an AI assistant that helps sellers publish products without getting lost in a long form full of unfamiliar fields. Iterated across several phases, each validated with research and usability testing.',
+    't-p1-tag1': 'AI',
+    't-view-1': 'View project →',
+    't-p2-desc': 'Skill Hub is a marketplace of "skills" that lets Miravia sellers connect their external AI agents to Seller Center tasks. Each skill automates manual tasks that could get repetitive and eat up sellers\' time.',
+    't-p2-tag1': 'AI',
+    't-view-2': 'View project →',
+    't-p3-meta': 'Mobile App · NEOLAND Bootcamp · 2023',
+    't-p3-desc': 'Internal app for ADIF railway workers, with shift clock-in, incident alerts, schedule and internal calls. Two-week sprint, with field research at Atocha-Cercanías and a full Design Thinking process.',
+    't-view-3': 'View project →',
+
+    't-c1-l1': 'The problem',
+    't-c1-p1': 'Interviews with Miravia sellers kept surfacing the same problem: listing a product by hand was slow and confusing. It was especially hard for new sellers, who ran into an extremely long form full of fields they didn\'t understand. Some said the process left them feeling "desperate" before they\'d even published their first product.',
+    't-c1-l2': 'Process — three phases',
+    't-c1-ol': '<li><strong>AI posting box.</strong> We replaced the long form with a single open field: the seller wrote, and AI sorted the content into the right fields.</li><li><strong>Refined the box.</strong> We made the photo section visible and swapped a generic "Tips" panel for 3 clear steps with real examples.</li><li><strong>Data after launch.</strong> The question shifted from "does it work?" to "can they find it, and do they trust it?". Missing feedback while AI processed the input was driving people to abandon it.</li>',
+    't-c1-l3': 'Outcome — one month after full rollout',
+    't-c1-s1': 'Never clicked the new entry point',
+    't-c1-s2': 'Dropped off before publishing',
+    't-c1-s3': 'Retention after first success',
+    't-c1-l4': 'Reflection',
+    't-c1-p2': 'It wasn\'t one single failure, but two problems stacked: sellers couldn\'t find the feature, and the ones who found it didn\'t trust it enough to finish. The <strong>74% retention</strong> was the real signal: the feature worked, the first attempt just needed to feel trustworthy.',
+    't-back-1': '← Back to projects',
+
+    't-c2-l1': 'The problem',
+    't-c2-p1': 'Seller Center relied on repetitive manual tasks (especially data exports), and connecting to an ERP required technical knowledge many sellers didn\'t have. The hard part was having to leave the platform to set up the Skill in an external AI agent — not very intuitive for non-technical sellers, but necessary given budget constraints.',
+    't-c2-l2': 'Process — validate before building',
+    't-c2-p2': 'We tested a first version and then a refined one, with clearer instructions and the corresponding legal copy, to catch issues before locking the final direction.',
+    't-c2-l3': 'Research findings',
+    't-c2-s1': 'Sellers found the hub without difficulty',
+    't-c2-s2': 'Were concerned about sharing data with third parties',
+    't-c2-l4': 'Reflection',
+    't-c2-p3': 'Clearer instructions and FAQs improved the experience, but many sellers still expected AI to be built into Seller Center. A native integration wasn\'t viable due to <strong>budget constraints</strong>, so the focus shifted to reducing confusion and building trust within those limits.',
+    't-back-2': '← Back to projects',
+
+    't-c3-meta': 'Mobile App · NEOLAND Bootcamp · 2023',
+    't-c3-l1': 'The problem',
+    't-c3-p1': 'The communication tools used by ADIF railway workers were outdated and inefficient. Information moved slowly between shifts, and coordination broke down right at the most high-pressure moments.',
+    't-c3-l2': 'Process',
+    't-c3-p2': 'Full Design Thinking process in a two-week sprint: field research at Atocha-Cercanías station, surveys and interviews, synthesized into personas and a journey map, and prototyping with usability testing before the final UI.',
+    't-c3-l3': 'The solution',
+    't-c3-ul': "<li>A single app installed on every company phone</li><li>Shift clock-in, incident alerts, and shift schedules</li><li>Visibility into who's on duty, and internal calls</li>",
+    't-c3-l4': 'Reflection',
+    't-c3-p3': 'ADISK was designed as a first step, not a complete solution. Designing just the UI wasn\'t enough: the real solution needed more than an app — it involved internal systems and teams that should have been brought in from the start, alongside the people who understood that infrastructure.',
+    't-c3-medium': 'Read the full process on Medium →',
+    't-back-3': '← Back to projects',
+
+    't-footer-eyebrow': 'Contact',
+    't-footer-h2': "Let's talk",
+    't-footer-p': 'A project, an opening, or just want to talk product and design? Get in touch, I always reply.'
+  };
+
+  var originals = {};
+  Object.keys(translations).forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) originals[id] = el.innerHTML;
+  });
+
+  var isEnglish = false;
+  var langBtn = document.getElementById('lang-toggle');
+  langBtn.addEventListener('click', function(){
+    isEnglish = !isEnglish;
+    Object.keys(translations).forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = isEnglish ? translations[id] : originals[id];
+    });
+    langBtn.textContent = isEnglish ? 'ES' : 'EN';
+    document.documentElement.lang = isEnglish ? 'en' : 'es';
+  });
 </script>
 </body>
 </html>
