@@ -229,21 +229,6 @@
     border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
   }
 
-  .edu-strip{
-    margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;
-  }
-  .edu-card{
-    border:1px solid var(--border); border-radius:12px; background:var(--bg-alt);
-    padding:20px 22px; display:flex; gap:14px; align-items:flex-start;
-  }
-  .edu-card .icon{
-    width:34px; height:34px; border-radius:8px; flex:0 0 auto;
-    display:flex; align-items:center; justify-content:center; background:var(--bg-dim);
-  }
-  .edu-card .icon svg{ width:17px; height:17px; }
-  .edu-card .school{ font-weight:600; font-size:.94rem; }
-  .edu-card .deg{ color:var(--text-soft); font-size:.86rem; margin-top:4px; }
-  .edu-card .when{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:10px; }
 
   /* ---------- contact / footer ---------- */
   footer#contacto{ padding:80px 0 48px; }
@@ -265,11 +250,8 @@
     .menu-btn{ display:flex; align-items:center; justify-content:center; }
     section#perfil{ padding:64px 0 48px; }
     section.block{ padding:56px 0; }
-    .job{ grid-template-columns:1fr; gap:6px; }
-    .edu-strip{ grid-template-columns:1fr; }
     .card-row{ grid-template-columns:1fr; padding:26px; }
     .card-row .thumb{ max-width:160px; }
-    .edu-card{ flex-direction:column; }
     footer#contacto .card{ padding:40px 26px; }
   }
 </style>
@@ -395,32 +377,6 @@
             <span class="tag">Information Architecture</span>
           </div>
         </article>
-      </div>
-
-      <div class="edu-strip" style="margin-top:28px;">
-        <div class="edu-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4 2 8l10 4 10-4-10-4Z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
-          <div>
-            <div class="school">NEOLAND</div>
-            <div class="deg">UX/UI Design Bootcamp</div>
-            <div class="when">Madrid · 2023</div>
-          </div>
-        </div>
-        <div class="edu-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h11l5 5v11H4V4Z" stroke="var(--accent)" stroke-width="1.5"/><path d="M8 10h7M8 14h7M8 18h4" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
-          <div>
-            <div class="school">Universidad de Málaga</div>
-            <div class="deg">Grado en Estudios Ingleses</div>
-            <div class="when">Sep 2019 — Jun 2023</div>
-          </div>
-        </div>
-        <div class="edu-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18V6l10-2v12" stroke="var(--accent)" stroke-width="1.5"/><circle cx="6.5" cy="18" r="2.5" stroke="var(--accent)" stroke-width="1.5"/><circle cx="16.5" cy="16" r="2.5" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
-          <div>
-            <div class="school">Conservatorio Superior de Música de Málaga</div>
-            <div class="deg">Grado en Música — Violín</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
