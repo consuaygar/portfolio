@@ -615,9 +615,10 @@
         <div class="carousel-viewport">
           <div class="carousel-track">
             <img src="images/adisk-00-login.webp" alt="ADISK: pantalla de login">
-            <img src="images/adisk-01-listado.webp" alt="ADISK: listado de equipo con disponibilidad y turnos de los compañeros">
-            <img src="images/adisk-02-checkin-pendiente.webp" alt="ADISK: fichaje de turno en el mapa para el día siguiente, pendiente de confirmar">
             <img src="images/adisk-03-checkin-confirmar.webp" alt="ADISK: fichaje de turno listo para confirmar">
+            <img src="images/adisk-checkin-2-finalizar.webp" alt="ADISK: fichaje de turno listo para finalizar">
+            <img src="images/adisk-02-checkin-pendiente.webp" alt="ADISK: fichaje de turno en el mapa para el día siguiente, pendiente de confirmar">
+            <img src="images/adisk-01-listado.webp" alt="ADISK: listado de equipo con disponibilidad y turnos de los compañeros">
             <img src="images/adisk-06-tareas-proceso.webp" alt="ADISK: pantalla de tareas, incidencias en proceso">
             <img src="images/adisk-07-tareas-cerradas.webp" alt="ADISK: pantalla de tareas, incidencias cerradas">
             <img src="images/adisk-04-incidencia-abierta.webp" alt="ADISK: detalle de una incidencia con actualizaciones en el tiempo">
@@ -719,7 +720,7 @@
     });
     function go(p){
       page = Math.max(0, Math.min(pageCount - 1, p));
-      var offset = page * (100 / pageCount);
+      var offset = page * perView * (100 / slides.length);
       track.style.transform = 'translateX(-' + offset + '%)';
       dots.forEach(function(d, i){ d.classList.toggle('active', i === page); });
       prev.disabled = page === 0;
