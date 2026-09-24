@@ -224,7 +224,12 @@
   }
   footer#contacto h2{ font-size:clamp(1.6rem,1.3rem + 1vw,2.3rem); font-weight:600; }
   footer#contacto p{ color:var(--text-soft); margin-top:14px; max-width:46ch; margin-left:auto; margin-right:auto; }
-  .contact-links{ display:flex; gap:14px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+  .contact-links{ display:flex; gap:12px 28px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+  .footer-link{
+    font-family:var(--font-body); font-weight:600; font-size:.95rem;
+    color:var(--accent); text-decoration:underline; text-underline-offset:4px;
+  }
+  .footer-link:hover{ color:var(--accent-strong); }
   .bottom-bar{
     display:flex; justify-content:space-between; align-items:center;
     margin-top:36px; font-size:.78rem; color:var(--text-soft); flex-wrap:wrap; gap:12px;
@@ -617,8 +622,9 @@
         <h2 style="margin-top:14px;" id="t-footer-h2">Hablemos</h2>
         <p id="t-footer-p">¿Un proyecto, una vacante o simplemente charlar sobre producto y diseño? Escríbeme, respondo siempre.</p>
         <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/consuelo-ayllón-garcía-a37b59122/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="footer-link" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
+          <a class="footer-link" href="https://www.linkedin.com/in/consuelo-ayll%C3%B3n-garc%C3%ADa-a37b59122/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="footer-link" href="Consuelo_Ayllon_CV_EN.pdf" download id="t-footer-cv">Descargar CV ↓</a>
         </div>
       </div>
       <div class="bottom-bar">
@@ -773,7 +779,8 @@
 
     't-footer-eyebrow': 'Contact',
     't-footer-h2': "Let's talk",
-    't-footer-p': 'A project, an opening, or just want to talk product and design? Get in touch, I always reply.'
+    't-footer-p': 'A project, an opening, or just want to talk product and design? Get in touch, I always reply.',
+    't-footer-cv': 'Download CV ↓'
   };
 
   var originals = {};
