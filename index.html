@@ -120,24 +120,6 @@
     font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em;
     font-size:.66rem; color:var(--text-soft); margin-bottom:4px;
   }
-  .hero-cta{ display:flex; gap:14px; margin-top:38px; flex-wrap:wrap; }
-  .btn{
-    font-family:var(--font-body); font-weight:600; font-size:.9rem;
-    padding:13px 24px; border-radius:8px; border:1px solid transparent;
-    cursor:pointer; text-decoration:none; display:inline-block; transition:transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
-  }
-  .btn:active{ transform:translateY(1px); }
-  .btn-primary{ background:var(--accent); color:var(--accent-contrast); }
-  .btn-primary:hover{ background:var(--accent-strong); }
-  .btn-secondary{ background:transparent; color:var(--text); border-color:var(--border); }
-  .btn-secondary:hover{ border-color:var(--accent); color:var(--accent); }
-
-  .skill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; }
-  .skill{
-    font-family:var(--font-mono); font-size:.72rem; padding:6px 13px;
-    border-radius:999px; border:1px solid var(--border); color:var(--text-soft);
-  }
-
   /* ---------- section shell ---------- */
   section.block{ padding:80px 0; border-bottom:1px solid var(--border); }
   section.block:last-of-type{ border-bottom:none; }
@@ -312,20 +294,6 @@
           <div class="meta-row">
             <div><div class="k" id="t-meta-k1">Ubicación</div><span id="t-meta-v1">España</span></div>
             <div><div class="k" id="t-meta-k2">Idiomas</div><span id="t-meta-v2">Español · Inglés</span></div>
-          </div>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#proyectos" id="t-cta-1">Ver proyectos</a>
-            <a class="btn btn-secondary" href="#contacto" id="t-cta-2">Escríbeme</a>
-          </div>
-
-          <div class="skill-row">
-            <span class="skill">UX Research</span>
-            <span class="skill" id="t-skill-2">Prototipado</span>
-            <span class="skill">Product Strategy</span>
-            <span class="skill">Usability Testing</span>
-            <span class="skill" id="t-skill-5">Arquitectura de la información</span>
-            <span class="skill">Figma</span>
           </div>
         </div>
         <img class="hero-portrait" src="images/portrait.webp" alt="Retrato de Consuelo Ayllón García">
@@ -599,8 +567,8 @@
         <h2 style="margin-top:14px;" id="t-footer-h2">Hablemos</h2>
         <div class="contact-links">
           <a class="footer-link" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
-          <a class="footer-link" href="https://www.linkedin.com/in/consuelo-ayll%C3%B3n-garc%C3%ADa-a37b59122/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="footer-link" href="Consuelo_Ayllon_CV_EN.pdf" download id="t-footer-cv">Descargar CV ↓</a>
+          <a class="footer-link" href="https://www.linkedin.com/in/consuelo-ayll%C3%B3n-garc%C3%ADa-a37b59122/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="footer-link" href="Consuelo_Ayllon_CV_EN.pdf" download id="t-footer-cv">Descargar CV</a>
         </div>
       </div>
       <div class="bottom-bar">
@@ -677,10 +645,6 @@
     't-meta-v1': 'Spain',
     't-meta-k2': 'Languages',
     't-meta-v2': 'Spanish · English',
-    't-cta-1': 'View projects',
-    't-cta-2': 'Get in touch',
-    't-skill-2': 'Prototyping',
-    't-skill-5': 'Information Architecture',
 
     't-exp-h2': 'Experience',
     't-exp1-desc': "Research, information architecture, and content for AliExpress and Miravia's seller platforms.",
@@ -739,7 +703,7 @@
 
     't-footer-eyebrow': 'Contact',
     't-footer-h2': "Let's talk",
-    't-footer-cv': 'Download CV ↓'
+    't-footer-cv': 'Download CV'
   };
 
   var originals = {};
