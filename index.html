@@ -161,16 +161,8 @@
   /* ---------- card list (shared by experience & projects) ---------- */
   .card-list{ display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
   .card-row{
-    display:grid; grid-template-columns:170px 1fr; gap:32px;
     background:var(--bg-alt); padding:36px;
-    align-items:start;
   }
-  .card-row .thumb{ margin-top:2px; }
-  .card-row .thumb{
-    aspect-ratio:4/3; border-radius:10px; position:relative; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .card-row .thumb svg{ width:46%; height:46%; }
   .card-row .num{
     font-family:var(--font-mono); font-size:.72rem; color:var(--accent);
     margin-bottom:8px;
@@ -214,11 +206,6 @@
     border:1px solid var(--border); border-radius:14px; background:var(--bg-alt);
     padding:24px; display:flex; flex-direction:column; gap:14px;
   }
-  .exp-card .icon{
-    width:44px; height:44px; border-radius:10px; flex:0 0 auto;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .exp-card .icon svg{ width:22px; height:22px; }
   .exp-card h3{ font-size:1.02rem; font-weight:600; line-height:1.3; }
   .exp-card .meta{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-soft); margin-top:4px; }
   .exp-card p.desc{ font-size:.85rem; color:var(--text-soft); }
@@ -294,8 +281,7 @@
     .menu-btn{ display:flex; align-items:center; justify-content:center; }
     section#perfil{ padding:64px 0 48px; }
     section.block{ padding:56px 0; }
-    .card-row{ grid-template-columns:1fr; padding:26px; }
-    .card-row .thumb{ max-width:160px; }
+    .card-row{ padding:26px; }
     footer#contacto .card{ padding:40px 26px; }
     .hero-grid{ grid-template-columns:1fr; }
     .hero-portrait{ width:150px; order:-1; }
@@ -376,9 +362,6 @@
 
       <div class="exp-grid">
         <article class="exp-card">
-          <div class="icon" style="background:linear-gradient(135deg, var(--accent), var(--text));">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l2 6H12l2-6Z" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 22v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V22" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M19 27v4M29 27v4" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <h3>UX Product Content Designer</h3>
             <div class="meta">Miravia · AliExpress</div>
@@ -393,9 +376,6 @@
         </article>
 
         <article class="exp-card">
-          <div class="icon" style="background:linear-gradient(135deg, var(--accent2), var(--accent));">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="24" cy="24" r="3.5" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 11v5M24 32v5M37 24h-5M16 24h-5" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <h3>UX Product Content Designer — HMI CUPRA</h3>
             <div class="meta">arttalo TECH - SEAT&amp;CUPRA</div>
@@ -411,9 +391,6 @@
         </article>
 
         <article class="exp-card">
-          <div class="icon" style="background:linear-gradient(135deg, var(--text), var(--accent2));">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="9" width="24" height="30" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M17 18h14M17 24h14M17 30h9" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <h3>Product Designer</h3>
             <div class="meta">Pontia Tech</div>
@@ -442,9 +419,6 @@
 
       <div class="card-list">
         <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--accent), var(--accent2));">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="2" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M14 20 L21 20 M14 25 L26 25" stroke="white" stroke-width="1.6" opacity=".9"/><circle cx="33" cy="18" r="3" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <div class="num">01</div>
             <h3>AI-Assisted Product Listing</h3>
@@ -460,9 +434,6 @@
         </article>
 
         <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--accent2), var(--text));">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="13" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M24 17 L24 24 L29 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <div class="num">02</div>
             <h3>AI Skill Hub</h3>
@@ -478,9 +449,6 @@
         </article>
 
         <article class="card-row">
-          <div class="thumb" style="background:linear-gradient(135deg, var(--text), var(--accent));">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="15" y="6" width="18" height="32" rx="3" stroke="white" stroke-width="1.6" opacity=".9"/><path d="M20 15 L28 15 M20 21 L28 21 M20 27 L25 27" stroke="white" stroke-width="1.6" opacity=".9"/></svg>
-          </div>
           <div>
             <div class="num">03</div>
             <h3>ADISK</h3>
