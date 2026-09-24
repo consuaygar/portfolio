@@ -80,29 +80,17 @@
   }
   .nav-row{
     max-width:1080px; margin:0 auto; padding:0 40px;
-    display:flex; align-items:center; justify-content:space-between;
-    height:68px;
+    display:flex; align-items:center;
+    height:68px; gap:28px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
-  .brand svg{ display:block; }
-  .brand span{ font-family:var(--font-display); font-weight:600; font-size:1rem; }
-  nav.links{ display:flex; align-items:center; gap:28px; }
+  .brand{ display:flex; align-items:center; text-decoration:none; color:var(--text); margin-right:auto; }
+  .brand span{ font-family:var(--font-display); font-weight:500; font-size:1.2rem; letter-spacing:-.01em; }
+  nav.links{ display:flex; align-items:center; gap:24px; }
   nav.links a{
     color:var(--text-soft); text-decoration:none; font-size:.88rem; font-weight:500;
     padding:6px 2px; border-bottom:1px solid transparent;
   }
   nav.links a:hover, nav.links a.active{ color:var(--text); border-color:var(--accent); }
-  .nav-cta{
-    font-family:var(--font-body); font-weight:600; font-size:.85rem;
-    background:var(--accent); color:var(--accent-contrast);
-    padding:10px 18px; border-radius:8px; text-decoration:none;
-    white-space:nowrap;
-  }
-  .nav-cta:hover{ background:var(--accent-strong); }
-  .menu-btn{
-    display:none; background:none; border:1px solid var(--border); border-radius:8px;
-    width:40px; height:40px; color:var(--text); cursor:pointer;
-  }
 
   /* ---------- hero ---------- */
   section#perfil{ padding:88px 0 64px; border-bottom:1px solid var(--border); }
@@ -223,7 +211,6 @@
     padding:52px 48px; text-align:center;
   }
   footer#contacto h2{ font-size:clamp(1.6rem,1.3rem + 1vw,2.3rem); font-weight:600; }
-  footer#contacto p{ color:var(--text-soft); margin-top:14px; max-width:46ch; margin-left:auto; margin-right:auto; }
   .contact-links{ display:flex; gap:12px 28px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
   .footer-link{
     font-family:var(--font-body); font-weight:600; font-size:.95rem;
@@ -282,8 +269,10 @@
 
   @media (max-width: 860px){
     .wrap, .nav-row{ padding-left:22px; padding-right:22px; }
-    nav.links{ display:none; }
-    .menu-btn{ display:flex; align-items:center; justify-content:center; }
+    .nav-row{ flex-wrap:wrap; height:auto; padding-top:14px; padding-bottom:14px; row-gap:12px; }
+    .brand{ margin-right:0; }
+    .lang-toggle{ order:2; margin-left:auto; }
+    nav.links{ order:3; flex-basis:100%; justify-content:center; gap:18px; }
     section#perfil{ padding:64px 0 48px; }
     section.block{ padding:56px 0; }
     .card-row{ padding:26px; }
@@ -297,25 +286,13 @@
 
 <header class="site-nav">
   <div class="nav-row">
-    <a class="brand" href="#perfil">
-      <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="12" stroke="var(--accent)" stroke-width="1.4"/>
-        <path d="M13 4 L13 22 M4 13 L22 13" stroke="var(--accent)" stroke-width="1.4"/>
-        <circle cx="13" cy="13" r="3.4" fill="var(--accent2)"/>
-      </svg>
-      <span>Consuelo</span>
-    </a>
+    <a class="brand" href="#" id="brand-link"><span>Consuelo Ayllón</span></a>
     <nav class="links" id="nav-links">
-      <a href="#perfil" id="t-nav-perfil">Perfil</a>
       <a href="#experiencia" id="t-nav-experiencia">Experiencia</a>
       <a href="#proyectos" id="t-nav-proyectos">Proyectos</a>
       <a href="#contacto" id="t-nav-contacto">Contacto</a>
     </nav>
     <button class="lang-toggle" id="lang-toggle">EN</button>
-    <a class="nav-cta" href="mailto:consuaygar@gmail.com" id="t-nav-cta">Escríbeme</a>
-    <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6"/></svg>
-    </button>
   </div>
 </header>
 
@@ -620,7 +597,6 @@
       <div class="card">
         <div class="eyebrow" id="t-footer-eyebrow">Contacto</div>
         <h2 style="margin-top:14px;" id="t-footer-h2">Hablemos</h2>
-        <p id="t-footer-p">¿Un proyecto, una vacante o simplemente charlar sobre producto y diseño? Escríbeme, respondo siempre.</p>
         <div class="contact-links">
           <a class="footer-link" href="mailto:consuaygar@gmail.com">consuaygar@gmail.com</a>
           <a class="footer-link" href="https://www.linkedin.com/in/consuelo-ayll%C3%B3n-garc%C3%ADa-a37b59122/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -638,26 +614,12 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  var menuBtn = document.getElementById('menu-btn');
-  var navLinks = document.getElementById('nav-links');
-  menuBtn.addEventListener('click', function(){
-    var open = navLinks.classList.toggle('mobile-open');
-    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open){
-      navLinks.style.cssText = 'display:flex; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg-alt); border-bottom:1px solid var(--border); padding:8px 22px 16px;';
-    } else {
-      navLinks.style.cssText = '';
-    }
-  });
-  navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      navLinks.classList.remove('mobile-open');
-      navLinks.style.cssText = '';
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
+  document.getElementById('brand-link').addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo(0, 0);
   });
 
-  var sectionIds = ['perfil','experiencia','proyectos','contacto'];
+  var sectionIds = ['experiencia','proyectos','contacto'];
   var sections = sectionIds.map(function(id){ return document.getElementById(id); });
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav-links a'));
   if ('IntersectionObserver' in window){
@@ -706,11 +668,9 @@
   });
 
   var translations = {
-    't-nav-perfil': 'Profile',
     't-nav-experiencia': 'Experience',
     't-nav-proyectos': 'Projects',
     't-nav-contacto': 'Contact',
-    't-nav-cta': 'Get in touch',
 
     't-hero-p': 'I design interfaces for digital products, end-to-end. Constantly learning, and sharpening AI as a working tool.',
     't-meta-k1': 'Location',
@@ -779,7 +739,6 @@
 
     't-footer-eyebrow': 'Contact',
     't-footer-h2': "Let's talk",
-    't-footer-p': 'A project, an opening, or just want to talk product and design? Get in touch, I always reply.',
     't-footer-cv': 'Download CV ↓'
   };
 
