@@ -254,6 +254,32 @@
     filter:drop-shadow(0 10px 24px rgba(20,22,27,.14));
   }
 
+  .case-carousel{ position:relative; max-width:560px; margin:28px auto; }
+  .carousel-viewport{ overflow:hidden; }
+  .carousel-track{ display:flex; transition:transform .35s ease; }
+  .carousel-track img{
+    flex:0 0 100%; width:100%; display:block;
+    filter:drop-shadow(0 10px 24px rgba(20,22,27,.14));
+  }
+  .carousel-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%; border:none;
+    background:var(--accent); color:var(--accent-contrast);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:1rem; padding:0;
+    transition:background .15s ease, opacity .15s ease;
+  }
+  .carousel-arrow:hover{ background:var(--accent-strong); }
+  .carousel-arrow[disabled]{ opacity:.25; pointer-events:none; }
+  .carousel-arrow.prev{ left:-4px; }
+  .carousel-arrow.next{ right:-4px; }
+  .carousel-dots{ display:flex; justify-content:center; gap:7px; margin-top:14px; }
+  .carousel-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--border);
+    border:none; padding:0; cursor:pointer; transition:background .15s ease;
+  }
+  .carousel-dot.active{ background:var(--accent); }
+
   /* ---------- language toggle ---------- */
   .lang-toggle{
     font-family:var(--font-mono); font-weight:500; font-size:.75rem;
@@ -493,7 +519,18 @@
           <li><strong>Datos tras el lanzamiento.</strong> La pregunta dejó de ser "¿funciona?" para pasar a "¿lo encuentran y confían en ello?". La falta de feedback mientras la IA procesaba la información estaba generando abandono.</li>
         </ol>
       </div>
-      <img class="case-img-float" src="images/case1-product-description.webp" alt="Mockup de MacBook Pro: editor de descripción de producto y descripción corta generada por IA">
+      <div class="case-carousel" id="case1-carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <img src="images/case1-mockup-01.webp" alt="Mockup de MacBook Pro: formulario manual original de Add Product, información básica e imágenes de producto">
+            <img src="images/case1-mockup-02.webp" alt="Mockup de MacBook Pro: editor de descripción de producto y descripción corta generada por IA">
+            <img src="images/case1-mockup-03.png" alt="Mockup de MacBook Pro: especificaciones y atributos de producto">
+          </div>
+        </div>
+        <button class="carousel-arrow prev" aria-label="Anterior">←</button>
+        <button class="carousel-arrow next" aria-label="Siguiente">→</button>
+        <div class="carousel-dots"></div>
+      </div>
       <div class="case-sub">
         <span class="case-label" id="t-c1-l3">Resultado — un mes tras el lanzamiento completo</span>
         <div class="stat-row">
@@ -642,6 +679,34 @@
     }, { rootMargin:'-40% 0px -55% 0px', threshold:0 });
     sections.forEach(function(s){ if (s) io.observe(s); });
   }
+
+  document.querySelectorAll('.case-carousel').forEach(function(root){
+    var track = root.querySelector('.carousel-track');
+    var slides = Array.prototype.slice.call(track.children);
+    var prev = root.querySelector('.prev');
+    var next = root.querySelector('.next');
+    var dotsWrap = root.querySelector('.carousel-dots');
+    var page = 0;
+    slides.forEach(function(){
+      var d = document.createElement('button');
+      d.className = 'carousel-dot';
+      dotsWrap.appendChild(d);
+    });
+    var dots = dotsWrap.querySelectorAll('.carousel-dot');
+    dots.forEach(function(d, i){
+      d.addEventListener('click', function(){ go(i); });
+    });
+    function go(p){
+      page = Math.max(0, Math.min(slides.length - 1, p));
+      track.style.transform = 'translateX(-' + (page * 100) + '%)';
+      dots.forEach(function(d, i){ d.classList.toggle('active', i === page); });
+      prev.disabled = page === 0;
+      next.disabled = page === slides.length - 1;
+    }
+    prev.addEventListener('click', function(){ go(page - 1); });
+    next.addEventListener('click', function(){ go(page + 1); });
+    go(0);
+  });
 
   var translations = {
     't-nav-perfil': 'Profile',
