@@ -255,6 +255,7 @@
   }
 
   .case-carousel{ position:relative; max-width:560px; margin:28px auto; }
+  .case-carousel.narrow{ max-width:260px; }
   .carousel-viewport{ overflow:hidden; }
   .carousel-track{ display:flex; transition:transform .35s ease; }
   .carousel-track img{
@@ -610,6 +611,20 @@
           <li>Fichaje de turno, alertas de incidencias y calendario de turnos</li>
           <li>Visibilidad de quién está de guardia y llamadas internas</li>
         </ul>
+      </div>
+      <div class="case-carousel narrow" id="case3-carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <img src="images/adisk-01-listado.webp" alt="ADISK: listado de equipo con disponibilidad y turnos de los compañeros">
+            <img src="images/adisk-02-checkin-pendiente.webp" alt="ADISK: fichaje de turno en el mapa para el día siguiente, pendiente de confirmar">
+            <img src="images/adisk-03-checkin-confirmar.webp" alt="ADISK: fichaje de turno listo para confirmar">
+            <img src="images/adisk-04-incidencia-abierta.webp" alt="ADISK: detalle de una incidencia con actualizaciones en el tiempo">
+            <img src="images/adisk-05-incidencia-cerrada.webp" alt="ADISK: incidencia cerrada">
+          </div>
+        </div>
+        <button class="carousel-arrow prev" aria-label="Anterior">←</button>
+        <button class="carousel-arrow next" aria-label="Siguiente">→</button>
+        <div class="carousel-dots"></div>
       </div>
       <div class="case-sub">
         <span class="case-label" id="t-c3-l4">Reflexión</span>
