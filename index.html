@@ -255,11 +255,10 @@
   }
 
   .case-carousel{ position:relative; max-width:560px; margin:28px auto; }
-  .case-carousel.narrow{ max-width:260px; }
   .carousel-viewport{ overflow:hidden; }
   .carousel-track{ display:flex; transition:transform .35s ease; }
   .carousel-track img{
-    flex:0 0 100%; width:100%; display:block;
+    flex:0 0 auto; display:block; box-sizing:border-box; padding-right:12px;
     filter:drop-shadow(0 10px 24px rgba(20,22,27,.14));
   }
   .carousel-arrow{
@@ -612,12 +611,15 @@
           <li>Visibilidad de quién está de guardia y llamadas internas</li>
         </ul>
       </div>
-      <div class="case-carousel narrow" id="case3-carousel">
+      <div class="case-carousel" id="case3-carousel" data-per-view="2">
         <div class="carousel-viewport">
           <div class="carousel-track">
+            <img src="images/adisk-00-login.webp" alt="ADISK: pantalla de login">
             <img src="images/adisk-01-listado.webp" alt="ADISK: listado de equipo con disponibilidad y turnos de los compañeros">
             <img src="images/adisk-02-checkin-pendiente.webp" alt="ADISK: fichaje de turno en el mapa para el día siguiente, pendiente de confirmar">
             <img src="images/adisk-03-checkin-confirmar.webp" alt="ADISK: fichaje de turno listo para confirmar">
+            <img src="images/adisk-06-tareas-proceso.webp" alt="ADISK: pantalla de tareas, incidencias en proceso">
+            <img src="images/adisk-07-tareas-cerradas.webp" alt="ADISK: pantalla de tareas, incidencias cerradas">
             <img src="images/adisk-04-incidencia-abierta.webp" alt="ADISK: detalle de una incidencia con actualizaciones en el tiempo">
             <img src="images/adisk-05-incidencia-cerrada.webp" alt="ADISK: incidencia cerrada">
           </div>
@@ -696,27 +698,32 @@
   }
 
   document.querySelectorAll('.case-carousel').forEach(function(root){
+    var perView = parseInt(root.getAttribute('data-per-view') || '1', 10);
     var track = root.querySelector('.carousel-track');
     var slides = Array.prototype.slice.call(track.children);
     var prev = root.querySelector('.prev');
     var next = root.querySelector('.next');
     var dotsWrap = root.querySelector('.carousel-dots');
+    var pageCount = Math.ceil(slides.length / perView);
     var page = 0;
-    slides.forEach(function(){
+    track.style.width = (slides.length / perView * 100) + '%';
+    slides.forEach(function(img){ img.style.width = (100 / slides.length) + '%'; });
+    for (var p = 0; p < pageCount; p++){
       var d = document.createElement('button');
       d.className = 'carousel-dot';
       dotsWrap.appendChild(d);
-    });
+    }
     var dots = dotsWrap.querySelectorAll('.carousel-dot');
     dots.forEach(function(d, i){
       d.addEventListener('click', function(){ go(i); });
     });
     function go(p){
-      page = Math.max(0, Math.min(slides.length - 1, p));
-      track.style.transform = 'translateX(-' + (page * 100) + '%)';
+      page = Math.max(0, Math.min(pageCount - 1, p));
+      var offset = page * (100 / pageCount);
+      track.style.transform = 'translateX(-' + offset + '%)';
       dots.forEach(function(d, i){ d.classList.toggle('active', i === page); });
       prev.disabled = page === 0;
-      next.disabled = page === slides.length - 1;
+      next.disabled = page === pageCount - 1;
     }
     prev.addEventListener('click', function(){ go(page - 1); });
     next.addEventListener('click', function(){ go(page + 1); });
